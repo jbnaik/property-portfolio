@@ -24,6 +24,7 @@ export function validatePortfolio(data) {
     (p.loans || []).forEach((l, j) => {
       if (!isNum(l.balance)) errors.push(`${at}.loans[${j}]: balance must be a number`);
       if (!isNum(l.rate)) errors.push(`${at}.loans[${j}]: rate must be a number (e.g. 6.19)`);
+      if (l.repayment !== undefined && l.repayment !== null && !isNum(l.repayment)) errors.push(`${at}.loans[${j}]: repayment must be a number, or omitted to estimate it`);
       if (l.repaymentFrequency && !FREQUENCIES.includes(l.repaymentFrequency)) errors.push(`${at}.loans[${j}]: unknown repaymentFrequency`);
     });
     if (p.rent && p.rent.frequency && !FREQUENCIES.includes(p.rent.frequency)) errors.push(`${at}.rent: unknown frequency`);

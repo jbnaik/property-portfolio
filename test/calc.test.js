@@ -15,6 +15,8 @@ test("validation catches mistakes", () => {
   const errors = validatePortfolio({ properties: [{ id: "x", name: "X", purchase: { price: "1", date: "2020" } }, { id: "x", name: "Y", purchase: { price: 1, date: "2020-01-01" } }] });
   assert.equal(errors.length, 2);
   assert.deepEqual(validatePortfolio({ properties: [], goals: { name: "x" } }), ["`goals` must be an array"]);
+  const blank = validatePortfolio({ properties: [{ id: "a", name: "A", purchase: { price: 1, date: "2020-01-01" }, loans: [{ balance: 1, rate: 5, repayment: "" }] }] });
+  assert.equal(blank.length, 1);
 });
 
 test("annualise", () => {
