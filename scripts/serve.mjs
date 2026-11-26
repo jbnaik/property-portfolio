@@ -9,10 +9,10 @@ const port = Number(process.env.PORT) || 8080;
 const types = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml" };
 
 createServer(async (req, res) => {
-  const path = normalize(decodeURIComponent(new URL(req.url, "http://x").pathname)).replace(/^(\.\.[/\\])+/, "");
-  const file = join(root, path.endsWith("/") ? `${path}index.html` : path);
-  if (!file.startsWith(root)) return res.writeHead(403).end();
   try {
+    const path = normalize(decodeURIComponent(new URL(req.url, "http://x").pathname)).replace(/^(\.\.[/\\])+/, "");
+    const file = join(root, path.endsWith("/") ? `${path}index.html` : path);
+    if (!file.startsWith(root)) return res.writeHead(403).end();
     const body = await readFile(file);
     res.writeHead(200, { "Content-Type": types[extname(file)] || "application/octet-stream", "Cache-Control": "no-store" }).end(body);
   } catch {
