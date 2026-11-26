@@ -1,0 +1,105 @@
+{
+  "owner": "Sample Investor",
+  "settings": {
+    "maxLvr": 0.8
+  },
+  "goals": [
+    { "name": "A$1.5M equity", "targetEquity": 1500000, "targetDate": "2032-06-30" }
+  ],
+  "properties": [
+    {
+      "id": "paddington-terrace",
+      "name": "Paddington Terrace",
+      "address": "12 Example St",
+      "suburb": "Paddington",
+      "state": "NSW",
+      "postcode": "2021",
+      "type": "House",
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "parking": 1,
+      "landSizeSqm": 180,
+      "status": "owner-occupied",
+      "purchase": { "date": "2018-03-15", "price": 1350000, "costs": 72000 },
+      "valuations": [
+        { "date": "2020-06-30", "value": 1420000, "source": "Bank valuation" },
+        { "date": "2022-06-30", "value": 1710000, "source": "Agent appraisal" },
+        { "date": "2024-06-30", "value": 1820000, "source": "Online estimate" },
+        { "date": "2026-06-30", "value": 1950000, "source": "Online estimate" }
+      ],
+      "loans": [
+        { "lender": "Big Bank", "balance": 840000, "rate": 5.89, "type": "P&I", "repayment": 5420, "repaymentFrequency": "monthly", "offset": 65000, "fixedUntil": null }
+      ],
+      "expenses": [
+        { "name": "Council rates", "amount": 2100, "frequency": "annual" },
+        { "name": "Water", "amount": 280, "frequency": "quarterly" },
+        { "name": "Home & contents insurance", "amount": 2600, "frequency": "annual" },
+        { "name": "Maintenance", "amount": 3000, "frequency": "annual" }
+      ],
+      "notes": "Home. Kitchen renovated 2021."
+    },
+    {
+      "id": "brisbane-unit",
+      "name": "Newstead Apartment",
+      "address": "804/55 Sample Rd",
+      "suburb": "Newstead",
+      "state": "QLD",
+      "postcode": "4006",
+      "type": "Apartment",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "parking": 1,
+      "status": "investment",
+      "purchase": { "date": "2020-09-01", "price": 560000, "costs": 21000 },
+      "valuations": [
+        { "date": "2022-09-01", "value": 610000, "source": "Agent appraisal" },
+        { "date": "2024-09-01", "value": 690000, "source": "Bank valuation" },
+        { "date": "2026-09-01", "value": 760000, "source": "Online estimate" }
+      ],
+      "loans": [
+        { "lender": "Online Lender", "balance": 448000, "rate": 6.19, "type": "IO", "offset": 0, "interestOnlyUntil": "2027-09-01" }
+      ],
+      "rent": { "amount": 720, "frequency": "weekly", "tenant": "J. Citizen", "leaseStart": "2026-02-01", "leaseEnd": "2027-01-31", "vacancyWeeks": 2, "managementFeePct": 6.6 },
+      "expenses": [
+        { "name": "Body corporate", "amount": 1450, "frequency": "quarterly" },
+        { "name": "Council rates", "amount": 1800, "frequency": "annual" },
+        { "name": "Water", "amount": 220, "frequency": "quarterly" },
+        { "name": "Landlord insurance", "amount": 420, "frequency": "annual" },
+        { "name": "Maintenance", "amount": 1200, "frequency": "annual" }
+      ],
+      "notes": "Depreciation schedule done 2020."
+    },
+    {
+      "id": "geelong-house",
+      "name": "Belmont House",
+      "address": "7 Placeholder Ave",
+      "suburb": "Belmont",
+      "state": "VIC",
+      "postcode": "3216",
+      "type": "House",
+      "bedrooms": 4,
+      "bathrooms": 2,
+      "parking": 2,
+      "landSizeSqm": 620,
+      "status": "investment",
+      "purchase": { "date": "2023-05-20", "price": 690000, "costs": 41000 },
+      "valuations": [
+        { "date": "2024-05-20", "value": 705000, "source": "Online estimate" },
+        { "date": "2025-05-20", "value": 730000, "source": "Online estimate" },
+        { "date": "2026-05-20", "value": 765000, "source": "Agent appraisal" }
+      ],
+      "loans": [
+        { "lender": "Big Bank", "balance": 545000, "rate": 6.04, "type": "P&I", "termYearsRemaining": 27, "offset": 12000 }
+      ],
+      "rent": { "amount": 620, "frequency": "weekly", "tenant": "A. Tenant", "leaseStart": "2025-11-01", "leaseEnd": "2026-10-31", "vacancyWeeks": 1, "managementFeePct": 7.7 },
+      "expenses": [
+        { "name": "Council rates", "amount": 2300, "frequency": "annual" },
+        { "name": "Water", "amount": 260, "frequency": "quarterly" },
+        { "name": "Landlord insurance", "amount": 1900, "frequency": "annual" },
+        { "name": "Land tax", "amount": 1350, "frequency": "annual" },
+        { "name": "Maintenance", "amount": 2000, "frequency": "annual" }
+      ],
+      "notes": ""
+    }
+  ]
+}
