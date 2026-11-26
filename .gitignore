@@ -1,0 +1,5 @@
+# Plaintext portfolio data never gets committed. Only site/data.enc.json is.
+data.json
+*.plain.json
+node_modules/
+.DS_Store

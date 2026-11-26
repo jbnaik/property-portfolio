@@ -1,0 +1,16 @@
+{
+  "name": "property-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal property portfolio dashboard: static site for GitHub Pages with client-side encrypted data",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "encrypt": "node scripts/encrypt.mjs",
+    "decrypt": "node scripts/decrypt.mjs",
+    "serve": "node scripts/serve.mjs",
+    "test": "node --test"
+  }
+}
