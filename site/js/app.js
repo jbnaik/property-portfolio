@@ -9,12 +9,28 @@ const nav = document.getElementById("nav");
 const state = { payload: null, data: null };
 
 function storedKey() {
-  return sessionStorage.getItem(KEY_STORE) || localStorage.getItem(KEY_STORE);
+  try {
+    return sessionStorage.getItem(KEY_STORE) || localStorage.getItem(KEY_STORE);
+  } catch {
+    return null;
+  }
+}
+
+function saveKey(raw, remember) {
+  try {
+    (remember ? localStorage : sessionStorage).setItem(KEY_STORE, raw);
+  } catch {}
+}
+
+function clearKey() {
+  try {
+    sessionStorage.removeItem(KEY_STORE);
+    localStorage.removeItem(KEY_STORE);
+  } catch {}
 }
 
 function lock() {
-  sessionStorage.removeItem(KEY_STORE);
-  localStorage.removeItem(KEY_STORE);
+  clearKey();
   state.data = null;
   showLogin();
 }
@@ -44,8 +60,7 @@ function showLogin(error = "") {
     btn.textContent = "Decrypting…";
     try {
       const { data, key } = await decryptJson(state.payload, document.getElementById("password").value);
-      const raw = await exportKey(key);
-      (document.getElementById("remember").checked ? localStorage : sessionStorage).setItem(KEY_STORE, raw);
+      saveKey(await exportKey(key), document.getElementById("remember").checked);
       state.data = data;
       route();
     } catch {
@@ -140,8 +155,7 @@ async function start() {
     try {
       state.data = await decryptWithKey(state.payload, await importKey(raw));
     } catch {
-      sessionStorage.removeItem(KEY_STORE);
-      localStorage.removeItem(KEY_STORE);
+      clearKey();
     }
   }
   route();
