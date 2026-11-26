@@ -58,14 +58,15 @@ function showLogin(error = "") {
     const btn = document.getElementById("unlock");
     btn.disabled = true;
     btn.textContent = "Decrypting…";
+    let result;
     try {
-      const { data, key } = await decryptJson(state.payload, document.getElementById("password").value);
-      saveKey(await exportKey(key), document.getElementById("remember").checked);
-      state.data = data;
-      route();
+      result = await decryptJson(state.payload, document.getElementById("password").value);
     } catch {
-      showLogin("Wrong password, or the data file is corrupted.");
+      return showLogin("Wrong password, or the data file is corrupted.");
     }
+    saveKey(await exportKey(result.key), document.getElementById("remember").checked);
+    state.data = result.data;
+    route();
   });
 }
 
@@ -125,7 +126,16 @@ function route() {
     cashflow: () => views.cashflow(state.data),
     data: () => views.dataEditor(state.data),
   }[page] || (() => views.overview(state.data));
-  app.innerHTML = render();
+  try {
+    app.innerHTML = render();
+  } catch (e) {
+    const issues = validatePortfolio(state.data);
+    app.innerHTML = `<div class="card msg error">Could not render this page: ${escapeHtml(e.message)}
+      ${issues.length ? `<ul>${issues.map((x) => `<li>${escapeHtml(x)}</li>`).join("")}</ul>` : ""}
+      <p>Fix the data on the <a href="#/data">Data</a> page.</p></div>`;
+    if (page !== "data") return;
+    app.innerHTML += views.dataEditor(state.data);
+  }
   if (page === "data") bindEditor();
   window.scrollTo(0, 0);
 }

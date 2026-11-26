@@ -6,6 +6,7 @@ export function validatePortfolio(data) {
   const errors = [];
   if (!data || typeof data !== "object") return ["Data must be a JSON object"];
   if (!Array.isArray(data.properties)) return ["`properties` must be an array"];
+  if (data.goals !== undefined && !Array.isArray(data.goals)) errors.push("`goals` must be an array");
   const ids = new Set();
   data.properties.forEach((p, i) => {
     const at = `properties[${i}]${p && p.name ? ` (${p.name})` : ""}`;
