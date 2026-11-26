@@ -49,7 +49,7 @@ export function amortisedRepayment(balance, ratePct, years, periodsPerYear = 12)
 }
 
 export function loanAnnualRepayments(loan) {
-  if (loan.repayment) return annualise(loan.repayment, loan.repaymentFrequency || "monthly");
+  if (loan.repayment !== undefined && loan.repayment !== null) return annualise(loan.repayment, loan.repaymentFrequency || "monthly");
   if (String(loan.type || "").toUpperCase() === "IO") return loanInterest(loan);
   return amortisedRepayment(Number(loan.balance) || 0, Number(loan.rate) || 0, loan.termYearsRemaining ?? 30) * 12;
 }

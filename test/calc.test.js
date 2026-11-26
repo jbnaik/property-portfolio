@@ -27,6 +27,10 @@ test("IO loan repayments equal interest net of offset", () => {
   close(calc.loanAnnualRepayments({ balance: 500000, offset: 100000, rate: 6, type: "IO" }), 24000);
 });
 
+test("explicit zero repayment is respected", () => {
+  assert.equal(calc.loanAnnualRepayments({ balance: 500000, rate: 6, type: "P&I", repayment: 0 }), 0);
+});
+
 test("amortised repayment matches standard formula", () => {
   close(calc.amortisedRepayment(500000, 6, 30), 2997.75, 0.01);
 });
